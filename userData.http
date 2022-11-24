@@ -1,0 +1,43 @@
+// API:1 => Path: /register/
+// Scenario 1 => If the username already exists, Response => Status code: 400, Status text: User already exists
+// Scenario 2 => If the registrant provides a password with less than 5 characters, Response => Status code: 400, Status text: Password is too short
+// Scenario 3 => Successful registration of the registrant, Response => Status code: 200, Status text: User created successfully
+###
+POST http://localhost:3000/register/
+Content-Type: application/json
+
+{
+  "username": "adam_richard",
+  "name": "Adam Rich",
+  "password": "rich457",
+  "gender": "male",
+  "location": "Detroit"
+}
+
+// API:2 => Path: /login/
+// Scenario 1 => If an unregistered user tries to login, Response => Status code: 400, Status text: Invalid user
+// Scenario 2 => If the user provides incorrect password, Response => Status code: 400, Status text: Invalid password
+// Scenario 3 => Successful login of the user, Response => Status code: 200, Status text: Login success!
+###
+POST http://localhost:3000/login/
+Content-Type: application/json
+
+{
+  "username": "adam_richard",
+  "password": "rich457"
+}
+
+// API:3 => /change-password/
+// Scenario 1 => If the user provides incorrect current password, Response => Status code: 400, Status text: Invalid current password
+// Scenario 1 => If the user provides new password with less than 5 characters, Response => Status code: 400, Status text: Password is too short
+// Scenario 1 => Successful password update, Response => Status code: 200, Status text: Password updated
+###
+PUT http://localhost:3000/change-password/
+Content-Type: application/json
+
+{
+  "username": "adam_richard",
+  "oldPassword": "richard@123",
+  "newPassword": "richard@123"
+}
+
